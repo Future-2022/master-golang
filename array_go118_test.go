@@ -63,7 +63,7 @@ func TestObjectsAndObjectValues(t *testing.T) {
 			want: []any{
 				map[string]any{},
 			},
-		},
+		}
 		{
 			desc: "Objects/multiple different objects",
 			give: Objects("", []*fakeObject{
