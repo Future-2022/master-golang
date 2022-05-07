@@ -95,22 +95,22 @@ func TestTeeCheck(t *testing.T) {
 // 	})
 // }
 
-func TestTeeWith(t *testing.T) {
-	withTee(func(tee Core, debugLogs, warnLogs *observer.ObservedLogs) {
-		f := makeInt64Field("k", 42)
-		tee = tee.With([]Field{f})
-		ent := Entry{Level: WarnLevel, Message: "log-at-warn"}
-		if ce := tee.Check(ent, nil); ce != nil {
-			ce.Write()
-		}
+// func TestTeeWith(t *testing.T) {
+// 	withTee(func(tee Core, debugLogs, warnLogs *observer.ObservedLogs) {
+// 		f := makeInt64Field("k", 42)
+// 		tee = tee.With([]Field{f})
+// 		ent := Entry{Level: WarnLevel, Message: "log-at-warn"}
+// 		if ce := tee.Check(ent, nil); ce != nil {
+// 			ce.Write()
+// 		}
 
-		for _, logs := range []*observer.ObservedLogs{debugLogs, warnLogs} {
-			assert.Equal(t, []observer.LoggedEntry{
-				{Entry: ent, Context: []Field{f}},
-			}, logs.All())
-		}
-	})
-}
+// 		for _, logs := range []*observer.ObservedLogs{debugLogs, warnLogs} {
+// 			assert.Equal(t, []observer.LoggedEntry{
+// 				{Entry: ent, Context: []Field{f}},
+// 			}, logs.All())
+// 		}
+// 	})
+// }
 
 func TestTeeEnabled(t *testing.T) {
 	infoLogger, _ := observer.New(InfoLevel)
