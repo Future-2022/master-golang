@@ -112,27 +112,27 @@ func TestTeeCheck(t *testing.T) {
 // 	})
 // }
 
-func TestTeeEnabled(t *testing.T) {
-	infoLogger, _ := observer.New(InfoLevel)
-	warnLogger, _ := observer.New(WarnLevel)
-	tee := NewTee(infoLogger, warnLogger)
-	tests := []struct {
-		lvl     Level
-		enabled bool
-	}{
-		{DebugLevel, false},
-		{InfoLevel, true},
-		{WarnLevel, true},
-		{ErrorLevel, true},
-		{DPanicLevel, true},
-		{PanicLevel, true},
-		{FatalLevel, true},
-	}
+// func TestTeeEnabled(t *testing.T) {
+// 	infoLogger, _ := observer.New(InfoLevel)
+// 	warnLogger, _ := observer.New(WarnLevel)
+// 	tee := NewTee(infoLogger, warnLogger)
+// 	tests := []struct {
+// 		lvl     Level
+// 		enabled bool
+// 	}{
+// 		{DebugLevel, false},
+// 		{InfoLevel, true},
+// 		{WarnLevel, true},
+// 		{ErrorLevel, true},
+// 		{DPanicLevel, true},
+// 		{PanicLevel, true},
+// 		{FatalLevel, true},
+// 	}
 
-	for _, tt := range tests {
-		assert.Equal(t, tt.enabled, tee.Enabled(tt.lvl), "Unexpected Enabled result for level %s.", tt.lvl)
-	}
-}
+// 	for _, tt := range tests {
+// 		assert.Equal(t, tt.enabled, tee.Enabled(tt.lvl), "Unexpected Enabled result for level %s.", tt.lvl)
+// 	}
+// }
 
 func TestTeeSync(t *testing.T) {
 	infoLogger, _ := observer.New(InfoLevel)
