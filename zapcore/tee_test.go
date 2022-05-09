@@ -134,21 +134,21 @@ func TestTeeCheck(t *testing.T) {
 // 	}
 // }
 
-func TestTeeSync(t *testing.T) {
-	infoLogger, _ := observer.New(InfoLevel)
-	warnLogger, _ := observer.New(WarnLevel)
-	tee := NewTee(infoLogger, warnLogger)
-	assert.NoError(t, tee.Sync(), "Unexpected error from Syncing a tee.")
+// func TestTeeSync(t *testing.T) {
+// 	infoLogger, _ := observer.New(InfoLevel)
+// 	warnLogger, _ := observer.New(WarnLevel)
+// 	tee := NewTee(infoLogger, warnLogger)
+// 	assert.NoError(t, tee.Sync(), "Unexpected error from Syncing a tee.")
 
-	sink := &ztest.Discarder{}
-	err := errors.New("failed")
-	sink.SetError(err)
+// 	sink := &ztest.Discarder{}
+// 	err := errors.New("failed")
+// 	sink.SetError(err)
 
-	noSync := NewCore(
-		NewJSONEncoder(testEncoderConfig()),
-		sink,
-		DebugLevel,
-	)
-	tee = NewTee(tee, noSync)
-	assert.Equal(t, err, tee.Sync(), "Expected an error when part of tee can't Sync.")
-}
+// 	noSync := NewCore(
+// 		NewJSONEncoder(testEncoderConfig()),
+// 		sink,
+// 		DebugLevel,
+// 	)
+// 	tee = NewTee(tee, noSync)
+// 	assert.Equal(t, err, tee.Sync(), "Expected an error when part of tee can't Sync.")
+// }
