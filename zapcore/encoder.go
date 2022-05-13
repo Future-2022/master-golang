@@ -63,13 +63,13 @@ func CapitalLevelEncoder(l Level, enc PrimitiveArrayEncoder) {
 
 // CapitalColorLevelEncoder serializes a Level to an all-caps string and adds color.
 // For example, InfoLevel is serialized to "INFO" and colored blue.
-func CapitalColorLevelEncoder(l Level, enc PrimitiveArrayEncoder) {
-	s, ok := _levelToCapitalColorString[l]
-	if !ok {
-		s = _unknownLevelColor.Add(l.CapitalString())
-	}
-	enc.AppendString(s)
-}
+// func CapitalColorLevelEncoder(l Level, enc PrimitiveArrayEncoder) {
+// 	s, ok := _levelToCapitalColorString[l]
+// 	if !ok {
+// 		s = _unknownLevelColor.Add(l.CapitalString())
+// 	}
+// 	enc.AppendString(s)
+// }
 
 // UnmarshalText unmarshals text to a LevelEncoder. "capital" is unmarshaled to
 // CapitalLevelEncoder, "coloredCapital" is unmarshaled to CapitalColorLevelEncoder,
