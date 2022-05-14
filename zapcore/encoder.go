@@ -75,19 +75,19 @@ func CapitalLevelEncoder(l Level, enc PrimitiveArrayEncoder) {
 // CapitalLevelEncoder, "coloredCapital" is unmarshaled to CapitalColorLevelEncoder,
 // "colored" is unmarshaled to LowercaseColorLevelEncoder, and anything else
 // is unmarshaled to LowercaseLevelEncoder.
-func (e *LevelEncoder) UnmarshalText(text []byte) error {
-	switch string(text) {
-	case "capital":
-		*e = CapitalLevelEncoder
-	case "capitalColor":
-		*e = CapitalColorLevelEncoder
-	case "color":
-		*e = LowercaseColorLevelEncoder
-	default:
-		*e = LowercaseLevelEncoder
-	}
-	return nil
-}
+// func (e *LevelEncoder) UnmarshalText(text []byte) error {
+// 	switch string(text) {
+// 	case "capital":
+// 		*e = CapitalLevelEncoder
+// 	case "capitalColor":
+// 		*e = CapitalColorLevelEncoder
+// 	case "color":
+// 		*e = LowercaseColorLevelEncoder
+// 	default:
+// 		*e = LowercaseLevelEncoder
+// 	}
+// 	return nil
+// }
 
 // A TimeEncoder serializes a time.Time to a primitive type.
 type TimeEncoder func(time.Time, PrimitiveArrayEncoder)
