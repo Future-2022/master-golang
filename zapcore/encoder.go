@@ -102,17 +102,17 @@ func EpochTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
 
 // EpochMillisTimeEncoder serializes a time.Time to a floating-point number of
 // milliseconds since the Unix epoch.
-func EpochMillisTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
-	nanos := t.UnixNano()
-	millis := float64(nanos) / float64(time.Millisecond)
-	enc.AppendFloat64(millis)
-}
+// func EpochMillisTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
+// 	nanos := t.UnixNano()
+// 	millis := float64(nanos) / float64(time.Millisecond)
+// 	enc.AppendFloat64(millis)
+// }
 
 // EpochNanosTimeEncoder serializes a time.Time to an integer number of
 // nanoseconds since the Unix epoch.
-func EpochNanosTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
-	enc.AppendInt64(t.UnixNano())
-}
+// func EpochNanosTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
+// 	enc.AppendInt64(t.UnixNano())
+// }
 
 func encodeTimeLayout(t time.Time, layout string, enc PrimitiveArrayEncoder) {
 	type appendTimeEncoder interface {
