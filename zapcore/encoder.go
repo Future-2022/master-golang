@@ -149,9 +149,9 @@ func RFC3339TimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
 //
 // If enc supports AppendTimeLayout(t time.Time,layout string), it's used
 // instead of appending a pre-formatted string value.
-func RFC3339NanoTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
-	encodeTimeLayout(t, time.RFC3339Nano, enc)
-}
+// func RFC3339NanoTimeEncoder(t time.Time, enc PrimitiveArrayEncoder) {
+// 	encodeTimeLayout(t, time.RFC3339Nano, enc)
+// }
 
 // TimeEncoderOfLayout returns TimeEncoder which serializes a time.Time using
 // given layout.
