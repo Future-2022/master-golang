@@ -168,23 +168,23 @@ func TimeEncoderOfLayout(layout string) TimeEncoder {
 // "millis" is unmarshaled to EpochMillisTimeEncoder.
 // "nanos" is unmarshaled to EpochNanosEncoder.
 // Anything else is unmarshaled to EpochTimeEncoder.
-func (e *TimeEncoder) UnmarshalText(text []byte) error {
-	switch string(text) {
-	case "rfc3339nano", "RFC3339Nano":
-		*e = RFC3339NanoTimeEncoder
-	case "rfc3339", "RFC3339":
-		*e = RFC3339TimeEncoder
-	case "iso8601", "ISO8601":
-		*e = ISO8601TimeEncoder
-	case "millis":
-		*e = EpochMillisTimeEncoder
-	case "nanos":
-		*e = EpochNanosTimeEncoder
-	default:
-		*e = EpochTimeEncoder
-	}
-	return nil
-}
+// func (e *TimeEncoder) UnmarshalText(text []byte) error {
+// 	switch string(text) {
+// 	case "rfc3339nano", "RFC3339Nano":
+// 		*e = RFC3339NanoTimeEncoder
+// 	case "rfc3339", "RFC3339":
+// 		*e = RFC3339TimeEncoder
+// 	case "iso8601", "ISO8601":
+// 		*e = ISO8601TimeEncoder
+// 	case "millis":
+// 		*e = EpochMillisTimeEncoder
+// 	case "nanos":
+// 		*e = EpochNanosTimeEncoder
+// 	default:
+// 		*e = EpochTimeEncoder
+// 	}
+// 	return nil
+// }
 
 // UnmarshalYAML unmarshals YAML to a TimeEncoder.
 // If value is an object with a "layout" field, it will be unmarshaled to  TimeEncoder with given layout.
