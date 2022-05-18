@@ -208,20 +208,20 @@ func (e *TimeEncoder) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	return e.UnmarshalText([]byte(s))
 }
 
-// UnmarshalJSON unmarshals JSON to a TimeEncoder as same way UnmarshalYAML does.
-func (e *TimeEncoder) UnmarshalJSON(data []byte) error {
-	return e.UnmarshalYAML(func(v interface{}) error {
-		return json.Unmarshal(data, v)
-	})
-}
+// // UnmarshalJSON unmarshals JSON to a TimeEncoder as same way UnmarshalYAML does.
+// func (e *TimeEncoder) UnmarshalJSON(data []byte) error {
+// 	return e.UnmarshalYAML(func(v interface{}) error {
+// 		return json.Unmarshal(data, v)
+// 	})
+// }
 
 // A DurationEncoder serializes a time.Duration to a primitive type.
 type DurationEncoder func(time.Duration, PrimitiveArrayEncoder)
 
 // SecondsDurationEncoder serializes a time.Duration to a floating-point number of seconds elapsed.
-func SecondsDurationEncoder(d time.Duration, enc PrimitiveArrayEncoder) {
-	enc.AppendFloat64(float64(d) / float64(time.Second))
-}
+// func SecondsDurationEncoder(d time.Duration, enc PrimitiveArrayEncoder) {
+// 	enc.AppendFloat64(float64(d) / float64(time.Second))
+// }
 
 // NanosDurationEncoder serializes a time.Duration to an integer number of
 // nanoseconds elapsed.
