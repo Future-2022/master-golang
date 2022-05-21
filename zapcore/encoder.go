@@ -270,10 +270,10 @@ type CallerEncoder func(EntryCaller, PrimitiveArrayEncoder)
 
 // ShortCallerEncoder serializes a caller in package/file:line format, trimming
 // all but the final directory from the full path.
-func ShortCallerEncoder(caller EntryCaller, enc PrimitiveArrayEncoder) {
-	// TODO: consider using a byte-oriented API to save an allocation.
-	enc.AppendString(caller.TrimmedPath())
-}
+// func ShortCallerEncoder(caller EntryCaller, enc PrimitiveArrayEncoder) {
+// 	// TODO: consider using a byte-oriented API to save an allocation.
+// 	enc.AppendString(caller.TrimmedPath())
+// }
 
 // UnmarshalText unmarshals text to a CallerEncoder. "full" is unmarshaled to
 // FullCallerEncoder and anything else is unmarshaled to ShortCallerEncoder.
