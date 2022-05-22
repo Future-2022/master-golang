@@ -112,15 +112,15 @@ var _errArrayElemPool = sync.Pool{New: func() interface{} {
 // May be passed in place of an array to build a single-element array.
 type errArrayElem struct{ err error }
 
-func newErrArrayElem(err error) *errArrayElem {
-	e := _errArrayElemPool.Get().(*errArrayElem)
-	e.err = err
-	return e
-}
+// func newErrArrayElem(err error) *errArrayElem {
+// 	e := _errArrayElemPool.Get().(*errArrayElem)
+// 	e.err = err
+// 	return e
+// }
 
-func (e *errArrayElem) MarshalLogArray(arr ArrayEncoder) error {
-	return arr.AppendObject(e)
-}
+// func (e *errArrayElem) MarshalLogArray(arr ArrayEncoder) error {
+// 	return arr.AppendObject(e)
+// }
 
 func (e *errArrayElem) MarshalLogObject(enc ObjectEncoder) error {
 	return encodeError("error", e.err, enc)
