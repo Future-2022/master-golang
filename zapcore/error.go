@@ -126,7 +126,7 @@ func (e *errArrayElem) MarshalLogObject(enc ObjectEncoder) error {
 	return encodeError("error", e.err, enc)
 }
 
-func (e *errArrayElem) Free() {
-	e.err = nil
-	_errArrayElemPool.Put(e)
-}
+// func (e *errArrayElem) Free() {
+// 	e.err = nil
+// 	_errArrayElemPool.Put(e)
+// }
