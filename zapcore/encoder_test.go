@@ -33,17 +33,17 @@ package zapcore_test
 // 	. "go.uber.org/zap/zapcore"
 // )
 
-var (
-	_epoch     = time.Date(1970, time.January, 1, 0, 0, 0, 0, time.UTC)
-	_testEntry = Entry{
-		LoggerName: "main",
-		Level:      InfoLevel,
-		Message:    `hello`,
-		Time:       _epoch,
-		Stack:      "fake-stack",
-		Caller:     EntryCaller{Defined: true, File: "foo.go", Line: 42, Function: "foo.Foo"},
-	}
-)
+// var (
+// 	_epoch     = time.Date(1970, time.January, 1, 0, 0, 0, 0, time.UTC)
+// 	_testEntry = Entry{
+// 		LoggerName: "main",
+// 		Level:      InfoLevel,
+// 		Message:    `hello`,
+// 		Time:       _epoch,
+// 		Stack:      "fake-stack",
+// 		Caller:     EntryCaller{Defined: true, File: "foo.go", Line: 42, Function: "foo.Foo"},
+// 	}
+// )
 
 func testEncoderConfig() EncoderConfig {
 	return EncoderConfig{
