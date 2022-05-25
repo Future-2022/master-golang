@@ -62,13 +62,13 @@ func testEncoderConfig() EncoderConfig {
 	}
 }
 
-func humanEncoderConfig() EncoderConfig {
-	cfg := testEncoderConfig()
-	cfg.EncodeTime = ISO8601TimeEncoder
-	cfg.EncodeLevel = CapitalLevelEncoder
-	cfg.EncodeDuration = StringDurationEncoder
-	return cfg
-}
+// func humanEncoderConfig() EncoderConfig {
+// 	cfg := testEncoderConfig()
+// 	cfg.EncodeTime = ISO8601TimeEncoder
+// 	cfg.EncodeLevel = CapitalLevelEncoder
+// 	cfg.EncodeDuration = StringDurationEncoder
+// 	return cfg
+// }
 
 func capitalNameEncoder(loggerName string, enc PrimitiveArrayEncoder) {
 	enc.AppendString(strings.ToUpper(loggerName))
