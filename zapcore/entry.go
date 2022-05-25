@@ -42,11 +42,11 @@ import (
 // 	}}
 // )
 
-func getCheckedEntry() *CheckedEntry {
-	ce := _cePool.Get().(*CheckedEntry)
-	ce.reset()
-	return ce
-}
+// func getCheckedEntry() *CheckedEntry {
+// 	ce := _cePool.Get().(*CheckedEntry)
+// 	ce.reset()
+// 	return ce
+// }
 
 func putCheckedEntry(ce *CheckedEntry) {
 	if ce == nil {
