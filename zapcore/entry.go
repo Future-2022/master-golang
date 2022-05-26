@@ -48,26 +48,26 @@ import (
 // 	return ce
 // }
 
-func putCheckedEntry(ce *CheckedEntry) {
-	if ce == nil {
-		return
-	}
-	_cePool.Put(ce)
-}
+// func putCheckedEntry(ce *CheckedEntry) {
+// 	if ce == nil {
+// 		return
+// 	}
+// 	_cePool.Put(ce)
+// }
 
 // NewEntryCaller makes an EntryCaller from the return signature of
 // runtime.Caller.
-func NewEntryCaller(pc uintptr, file string, line int, ok bool) EntryCaller {
-	if !ok {
-		return EntryCaller{}
-	}
-	return EntryCaller{
-		PC:      pc,
-		File:    file,
-		Line:    line,
-		Defined: true,
-	}
-}
+// func NewEntryCaller(pc uintptr, file string, line int, ok bool) EntryCaller {
+// 	if !ok {
+// 		return EntryCaller{}
+// 	}
+// 	return EntryCaller{
+// 		PC:      pc,
+// 		File:    file,
+// 		Line:    line,
+// 		Defined: true,
+// 	}
+// }
 
 // EntryCaller represents the caller of a logging function.
 type EntryCaller struct {
