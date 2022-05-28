@@ -85,18 +85,18 @@ func (ec EntryCaller) String() string {
 
 // FullPath returns a /full/path/to/package/file:line description of the
 // caller.
-func (ec EntryCaller) FullPath() string {
-	if !ec.Defined {
-		return "undefined"
-	}
-	buf := bufferpool.Get()
-	buf.AppendString(ec.File)
-	buf.AppendByte(':')
-	buf.AppendInt(int64(ec.Line))
-	caller := buf.String()
-	buf.Free()
-	return caller
-}
+// func (ec EntryCaller) FullPath() string {
+// 	if !ec.Defined {
+// 		return "undefined"
+// 	}
+// 	buf := bufferpool.Get()
+// 	buf.AppendString(ec.File)
+// 	buf.AppendByte(':')
+// 	buf.AppendInt(int64(ec.Line))
+// 	caller := buf.String()
+// 	buf.Free()
+// 	return caller
+// }
 
 // TrimmedPath returns a package/file:line description of the caller,
 // preserving only the leaf directory name and file name.
