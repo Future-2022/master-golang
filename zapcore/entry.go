@@ -143,30 +143,30 @@ func (ec EntryCaller) TrimmedPath() string {
 //
 // Entries are pooled, so any functions that accept them MUST be careful not to
 // retain references to them.
-type Entry struct {
-	Level      Level
-	Time       time.Time
-	LoggerName string
-	Message    string
-	Caller     EntryCaller
-	Stack      string
-}
+// type Entry struct {
+// 	Level      Level
+// 	Time       time.Time
+// 	LoggerName string
+// 	Message    string
+// 	Caller     EntryCaller
+// 	Stack      string
+// }
 
 // CheckWriteAction indicates what action to take after a log entry is
 // processed. Actions are ordered in increasing severity.
 type CheckWriteAction uint8
 
-const (
-	// WriteThenNoop indicates that nothing special needs to be done. It's the
-	// default behavior.
-	WriteThenNoop CheckWriteAction = iota
-	// WriteThenGoexit runs runtime.Goexit after Write.
-	WriteThenGoexit
-	// WriteThenPanic causes a panic after Write.
-	WriteThenPanic
-	// WriteThenFatal causes a fatal os.Exit after Write.
-	WriteThenFatal
-)
+// const (
+// 	// WriteThenNoop indicates that nothing special needs to be done. It's the
+// 	// default behavior.
+// 	WriteThenNoop CheckWriteAction = iota
+// 	// WriteThenGoexit runs runtime.Goexit after Write.
+// 	WriteThenGoexit
+// 	// WriteThenPanic causes a panic after Write.
+// 	WriteThenPanic
+// 	// WriteThenFatal causes a fatal os.Exit after Write.
+// 	WriteThenFatal
+// )
 
 // CheckedEntry is an Entry together with a collection of Cores that have
 // already agreed to log it.
