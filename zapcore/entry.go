@@ -174,25 +174,25 @@ type CheckWriteAction uint8
 // CheckedEntry references should be created by calling AddCore or Should on a
 // nil *CheckedEntry. References are returned to a pool after Write, and MUST
 // NOT be retained after calling their Write method.
-type CheckedEntry struct {
-	Entry
-	ErrorOutput WriteSyncer
-	dirty       bool // best-effort detection of pool misuse
-	should      CheckWriteAction
-	cores       []Core
-}
+// type CheckedEntry struct {
+// 	Entry
+// 	ErrorOutput WriteSyncer
+// 	dirty       bool // best-effort detection of pool misuse
+// 	should      CheckWriteAction
+// 	cores       []Core
+// }
 
-func (ce *CheckedEntry) reset() {
-	ce.Entry = Entry{}
-	ce.ErrorOutput = nil
-	ce.dirty = false
-	ce.should = WriteThenNoop
-	for i := range ce.cores {
-		// don't keep references to cores
-		ce.cores[i] = nil
-	}
-	ce.cores = ce.cores[:0]
-}
+// func (ce *CheckedEntry) reset() {
+// 	ce.Entry = Entry{}
+// 	ce.ErrorOutput = nil
+// 	ce.dirty = false
+// 	ce.should = WriteThenNoop
+// 	for i := range ce.cores {
+// 		// don't keep references to cores
+// 		ce.cores[i] = nil
+// 	}
+// 	ce.cores = ce.cores[:0]
+// }
 
 // Write writes the entry to the stored Cores, returns any errors, and returns
 // the CheckedEntry reference to a pool for immediate re-use. Finally, it
