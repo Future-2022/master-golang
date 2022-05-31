@@ -240,23 +240,23 @@ func (ce *CheckedEntry) Write(fields ...Field) {
 // AddCore adds a Core that has agreed to log this CheckedEntry. It's intended to be
 // used by Core.Check implementations, and is safe to call on nil CheckedEntry
 // references.
-func (ce *CheckedEntry) AddCore(ent Entry, core Core) *CheckedEntry {
-	if ce == nil {
-		ce = getCheckedEntry()
-		ce.Entry = ent
-	}
-	ce.cores = append(ce.cores, core)
-	return ce
-}
+// func (ce *CheckedEntry) AddCore(ent Entry, core Core) *CheckedEntry {
+// 	if ce == nil {
+// 		ce = getCheckedEntry()
+// 		ce.Entry = ent
+// 	}
+// 	ce.cores = append(ce.cores, core)
+// 	return ce
+// }
 
 // Should sets this CheckedEntry's CheckWriteAction, which controls whether a
 // Core will panic or fatal after writing this log entry. Like AddCore, it's
 // safe to call on nil CheckedEntry references.
-func (ce *CheckedEntry) Should(ent Entry, should CheckWriteAction) *CheckedEntry {
-	if ce == nil {
-		ce = getCheckedEntry()
-		ce.Entry = ent
-	}
-	ce.should = should
-	return ce
-}
+// func (ce *CheckedEntry) Should(ent Entry, should CheckWriteAction) *CheckedEntry {
+// 	if ce == nil {
+// 		ce = getCheckedEntry()
+// 		ce.Entry = ent
+// 	}
+// 	ce.should = should
+// 	return ce
+// }
