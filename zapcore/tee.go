@@ -48,14 +48,14 @@ func (mc multiCore) With(fields []Field) Core {
 	return clone
 }
 
-func (mc multiCore) Enabled(lvl Level) bool {
-	for i := range mc {
-		if mc[i].Enabled(lvl) {
-			return true
-		}
-	}
-	return false
-}
+// func (mc multiCore) Enabled(lvl Level) bool {
+// 	for i := range mc {
+// 		if mc[i].Enabled(lvl) {
+// 			return true
+// 		}
+// 	}
+// 	return false
+// }
 
 func (mc multiCore) Check(ent Entry, ce *CheckedEntry) *CheckedEntry {
 	for i := range mc {
