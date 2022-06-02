@@ -90,18 +90,18 @@ type errorGroup interface {
 // Encodes a list of errors using the standard error encoding logic.
 type errArray []error
 
-func (errs errArray) MarshalLogArray(arr ArrayEncoder) error {
-	for i := range errs {
-		if errs[i] == nil {
-			continue
-		}
+// func (errs errArray) MarshalLogArray(arr ArrayEncoder) error {
+// 	for i := range errs {
+// 		if errs[i] == nil {
+// 			continue
+// 		}
 
-		el := newErrArrayElem(errs[i])
-		arr.AppendObject(el)
-		el.Free()
-	}
-	return nil
-}
+// 		el := newErrArrayElem(errs[i])
+// 		arr.AppendObject(el)
+// 		el.Free()
+// 	}
+// 	return nil
+// }
 
 var _errArrayElemPool = sync.Pool{New: func() interface{} {
 	return &errArrayElem{}
