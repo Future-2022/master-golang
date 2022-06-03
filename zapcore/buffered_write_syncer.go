@@ -28,14 +28,14 @@ import (
 	"go.uber.org/multierr"
 )
 
-const (
-	// _defaultBufferSize specifies the default size used by Buffer.
-	_defaultBufferSize = 256 * 1024 // 256 kB
+// const (
+// 	// _defaultBufferSize specifies the default size used by Buffer.
+// 	_defaultBufferSize = 256 * 1024 // 256 kB
 
-	// _defaultFlushInterval specifies the default flush interval for
-	// Buffer.
-	_defaultFlushInterval = 30 * time.Second
-)
+// 	// _defaultFlushInterval specifies the default flush interval for
+// 	// Buffer.
+// 	_defaultFlushInterval = 30 * time.Second
+// )
 
 // A BufferedWriteSyncer is a WriteSyncer that buffers writes in-memory before
 // flushing them to a wrapped WriteSyncer after reaching some limit, or at some
@@ -103,25 +103,25 @@ func (s *BufferedWriteSyncer) initialize() {
 
 // Write writes log data into buffer syncer directly, multiple Write calls will be batched,
 // and log data will be flushed to disk when the buffer is full or periodically.
-func (s *BufferedWriteSyncer) Write(bs []byte) (int, error) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
+// func (s *BufferedWriteSyncer) Write(bs []byte) (int, error) {
+// 	s.mu.Lock()
+// 	defer s.mu.Unlock()
 
-	if !s.initialized {
-		s.initialize()
-	}
+// 	if !s.initialized {
+// 		s.initialize()
+// 	}
 
-	// To avoid partial writes from being flushed, we manually flush the existing buffer if:
-	// * The current write doesn't fit into the buffer fully, and
-	// * The buffer is not empty (since bufio will not split large writes when the buffer is empty)
-	if len(bs) > s.writer.Available() && s.writer.Buffered() > 0 {
-		if err := s.writer.Flush(); err != nil {
-			return 0, err
-		}
-	}
+// 	// To avoid partial writes from being flushed, we manually flush the existing buffer if:
+// 	// * The current write doesn't fit into the buffer fully, and
+// 	// * The buffer is not empty (since bufio will not split large writes when the buffer is empty)
+// 	if len(bs) > s.writer.Available() && s.writer.Buffered() > 0 {
+// 		if err := s.writer.Flush(); err != nil {
+// 			return 0, err
+// 		}
+// 	}
 
-	return s.writer.Write(bs)
-}
+// 	return s.writer.Write(bs)
+// }
 
 // Sync flushes buffered log data into disk directly.
 func (s *BufferedWriteSyncer) Sync() error {
