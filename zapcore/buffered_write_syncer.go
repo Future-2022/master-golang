@@ -156,33 +156,33 @@ func (s *BufferedWriteSyncer) flushLoop() {
 
 // Stop closes the buffer, cleans up background goroutines, and flushes
 // remaining unwritten data.
-func (s *BufferedWriteSyncer) Stop() (err error) {
-	var stopped bool
+// func (s *BufferedWriteSyncer) Stop() (err error) {
+// 	var stopped bool
 
-	// Critical section.
-	func() {
-		s.mu.Lock()
-		defer s.mu.Unlock()
+// 	// Critical section.
+// 	func() {
+// 		s.mu.Lock()
+// 		defer s.mu.Unlock()
 
-		if !s.initialized {
-			return
-		}
+// 		if !s.initialized {
+// 			return
+// 		}
 
-		stopped = s.stopped
-		if stopped {
-			return
-		}
-		s.stopped = true
+// 		stopped = s.stopped
+// 		if stopped {
+// 			return
+// 		}
+// 		s.stopped = true
 
-		s.ticker.Stop()
-		close(s.stop) // tell flushLoop to stop
-		<-s.done      // and wait until it has
-	}()
+// 		s.ticker.Stop()
+// 		close(s.stop) // tell flushLoop to stop
+// 		<-s.done      // and wait until it has
+// 	}()
 
-	// Don't call Sync on consecutive Stops.
-	if !stopped {
-		err = s.Sync()
-	}
+// 	// Don't call Sync on consecutive Stops.
+// 	if !stopped {
+// 		err = s.Sync()
+// 	}
 
-	return err
-}
+// 	return err
+// }

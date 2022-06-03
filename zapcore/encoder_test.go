@@ -20,18 +20,18 @@
 
 package zapcore_test
 
-import (
-	"encoding/json"
-	"strings"
-	"testing"
-	"time"
+// import (
+// 	"encoding/json"
+// 	"strings"
+// 	"testing"
+// 	"time"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
-	"gopkg.in/yaml.v2"
+// 	"github.com/stretchr/testify/assert"
+// 	"github.com/stretchr/testify/require"
+// 	"gopkg.in/yaml.v2"
 
-	. "go.uber.org/zap/zapcore"
-)
+// 	. "go.uber.org/zap/zapcore"
+// )
 
 var (
 	_epoch     = time.Date(1970, time.January, 1, 0, 0, 0, 0, time.UTC)

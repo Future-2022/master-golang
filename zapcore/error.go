@@ -46,19 +46,19 @@ import (
 func encodeError(key string, err error, enc ObjectEncoder) (retErr error) {
 	// Try to capture panics (from nil references or otherwise) when calling
 	// the Error() method
-	defer func() {
-		if rerr := recover(); rerr != nil {
-			// If it's a nil pointer, just say "<nil>". The likeliest causes are a
-			// error that fails to guard against nil or a nil pointer for a
-			// value receiver, and in either case, "<nil>" is a nice result.
-			if v := reflect.ValueOf(err); v.Kind() == reflect.Ptr && v.IsNil() {
-				enc.AddString(key, "<nil>")
-				return
-			}
+	// defer func() {
+	// 	if rerr := recover(); rerr != nil {
+	// 		// If it's a nil pointer, just say "<nil>". The likeliest causes are a
+	// 		// error that fails to guard against nil or a nil pointer for a
+	// 		// value receiver, and in either case, "<nil>" is a nice result.
+	// 		if v := reflect.ValueOf(err); v.Kind() == reflect.Ptr && v.IsNil() {
+	// 			enc.AddString(key, "<nil>")
+	// 			return
+	// 		}
 
-			retErr = fmt.Errorf("PANIC=%v", rerr)
-		}
-	}()
+	// 		retErr = fmt.Errorf("PANIC=%v", rerr)
+	// 	}
+	// }()
 
 	basic := err.Error()
 	enc.AddString(key, basic)
