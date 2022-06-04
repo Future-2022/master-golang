@@ -50,9 +50,9 @@ func Complex128s(key string, nums []complex128) Field {
 }
 
 // Complex64s constructs a field that carries a slice of complex numbers.
-func Complex64s(key string, nums []complex64) Field {
-	return Array(key, complex64s(nums))
-}
+// func Complex64s(key string, nums []complex64) Field {
+// 	return Array(key, complex64s(nums))
+// }
 
 // Durations constructs a field that carries a slice of time.Durations.
 func Durations(key string, ds []time.Duration) Field {
