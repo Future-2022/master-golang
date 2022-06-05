@@ -32,6 +32,7 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
+
 type username string
 
 func (n username) MarshalLogObject(enc zapcore.ObjectEncoder) error {
@@ -56,14 +57,15 @@ func assertCanBeReused(t testing.TB, field Field) {
 		}()
 	}
 
+
 	wg.Wait()
 }
 
 func TestFieldConstructors(t *testing.T) {
 	// Interface types.
-	addr := net.ParseIP("1.2.3.4")
-	name := username("phil")
-	ints := []int{5, 6}
+	// addr := net.ParseIP("1.2.3.4")
+	// name := username("phil")
+	// ints := []int{5, 6}
 
 	// Helpful values for use in constructing pointers to primitives below.
 	var (
