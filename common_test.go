@@ -40,9 +40,9 @@ func withLogger(t testing.TB, e zapcore.LevelEnabler, opts []Option, f func(*Log
 	f(log, logs)
 }
 
-func withSugar(t testing.TB, e zapcore.LevelEnabler, opts []Option, f func(*SugaredLogger, *observer.ObservedLogs)) {
-	withLogger(t, e, opts, func(logger *Logger, logs *observer.ObservedLogs) { f(logger.Sugar(), logs) })
-}
+// func withSugar(t testing.TB, e zapcore.LevelEnabler, opts []Option, f func(*SugaredLogger, *observer.ObservedLogs)) {
+// 	withLogger(t, e, opts, func(logger *Logger, logs *observer.ObservedLogs) { f(logger.Sugar(), logs) })
+// }
 
 func runConcurrently(goroutines, iterations int, wg *sync.WaitGroup, f func()) {
 	wg.Add(goroutines)
