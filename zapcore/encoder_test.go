@@ -70,9 +70,9 @@ func testEncoderConfig() EncoderConfig {
 // 	return cfg
 // }
 
-func capitalNameEncoder(loggerName string, enc PrimitiveArrayEncoder) {
-	enc.AppendString(strings.ToUpper(loggerName))
-}
+// func capitalNameEncoder(loggerName string, enc PrimitiveArrayEncoder) {
+// 	enc.AppendString(strings.ToUpper(loggerName))
+// }
 
 func TestEncoderConfiguration(t *testing.T) {
 	base := testEncoderConfig()
