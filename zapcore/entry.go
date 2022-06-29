@@ -224,16 +224,16 @@ func (ce *CheckedEntry) Write(fields ...Field) {
 		ce.ErrorOutput.Sync()
 	}
 
-	should, msg := ce.should, ce.Message
-	putCheckedEntry(ce)
+	// should, msg := ce.should, ce.Message
+	// putCheckedEntry(ce)
 
-	switch should {
-	case WriteThenPanic:
-		panic(msg)
-	case WriteThenFatal:
-		exit.Exit()
-	case WriteThenGoexit:
-		runtime.Goexit()
+	// switch should {
+	// case WriteThenPanic:
+	// 	panic(msg)
+	// case WriteThenFatal:
+	// 	exit.Exit()
+	// case WriteThenGoexit:
+	// 	runtime.Goexit()
 	}
 }
 
