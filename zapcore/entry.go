@@ -198,21 +198,21 @@ type CheckWriteAction uint8
 // the CheckedEntry reference to a pool for immediate re-use. Finally, it
 // executes any required CheckWriteAction.
 func (ce *CheckedEntry) Write(fields ...Field) {
-	if ce == nil {
-		return
-	}
+	// if ce == nil {
+	// 	return
+	// }
 
-	if ce.dirty {
-		if ce.ErrorOutput != nil {
-			// Make a best effort to detect unsafe re-use of this CheckedEntry.
-			// If the entry is dirty, log an internal error; because the
-			// CheckedEntry is being used after it was returned to the pool,
-			// the message may be an amalgamation from multiple call sites.
-			fmt.Fprintf(ce.ErrorOutput, "%v Unsafe CheckedEntry re-use near Entry %+v.\n", ce.Time, ce.Entry)
-			ce.ErrorOutput.Sync()
-		}
-		return
-	}
+	// if ce.dirty {
+	// 	if ce.ErrorOutput != nil {
+	// 		// Make a best effort to detect unsafe re-use of this CheckedEntry.
+	// 		// If the entry is dirty, log an internal error; because the
+	// 		// CheckedEntry is being used after it was returned to the pool,
+	// 		// the message may be an amalgamation from multiple call sites.
+	// 		fmt.Fprintf(ce.ErrorOutput, "%v Unsafe CheckedEntry re-use near Entry %+v.\n", ce.Time, ce.Entry)
+	// 		ce.ErrorOutput.Sync()
+	// 	}
+	// 	return
+	// }
 	ce.dirty = true
 
 	// var err error
