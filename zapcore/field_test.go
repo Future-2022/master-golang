@@ -34,11 +34,11 @@ import (
 	. "go.uber.org/zap/zapcore"
 )
 
-type users int
+// type users int
 
-func (u users) String() string {
-	return fmt.Sprintf("%d users", int(u))
-}
+// func (u users) String() string {
+// 	return fmt.Sprintf("%d users", int(u))
+// }
 
 func (u users) MarshalLogObject(enc ObjectEncoder) error {
 	if int(u) < 0 {
