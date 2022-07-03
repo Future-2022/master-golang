@@ -50,12 +50,12 @@ type hooked struct {
 // 	return ce
 // }
 
-func (h *hooked) With(fields []Field) Core {
-	return &hooked{
-		Core:  h.Core.With(fields),
-		funcs: h.funcs,
-	}
-}
+// func (h *hooked) With(fields []Field) Core {
+// 	return &hooked{
+// 		Core:  h.Core.With(fields),
+// 		funcs: h.funcs,
+// 	}
+// }
 
 func (h *hooked) Write(ent Entry, _ []Field) error {
 	// Since our downstream had a chance to register itself directly with the
