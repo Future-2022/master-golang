@@ -32,23 +32,23 @@ type hooked struct {
 //
 // This offers users an easy way to register simple callbacks (e.g., metrics
 // collection) without implementing the full Core interface.
-func RegisterHooks(core Core, hooks ...func(Entry) error) Core {
-	funcs := append([]func(Entry) error{}, hooks...)
-	return &hooked{
-		Core:  core,
-		funcs: funcs,
-	}
-}
+// func RegisterHooks(core Core, hooks ...func(Entry) error) Core {
+// 	funcs := append([]func(Entry) error{}, hooks...)
+// 	return &hooked{
+// 		Core:  core,
+// 		funcs: funcs,
+// 	}
+// }
 
-func (h *hooked) Check(ent Entry, ce *CheckedEntry) *CheckedEntry {
-	// Let the wrapped Core decide whether to log this message or not. This
-	// also gives the downstream a chance to register itself directly with the
-	// CheckedEntry.
-	if downstream := h.Core.Check(ent, ce); downstream != nil {
-		return downstream.AddCore(ent, h)
-	}
-	return ce
-}
+// func (h *hooked) Check(ent Entry, ce *CheckedEntry) *CheckedEntry {
+// 	// Let the wrapped Core decide whether to log this message or not. This
+// 	// also gives the downstream a chance to register itself directly with the
+// 	// CheckedEntry.
+// 	if downstream := h.Core.Check(ent, ce); downstream != nil {
+// 		return downstream.AddCore(ent, h)
+// 	}
+// 	return ce
+// }
 
 func (h *hooked) With(fields []Field) Core {
 	return &hooked{
