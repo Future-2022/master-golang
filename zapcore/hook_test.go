@@ -20,14 +20,14 @@
 
 package zapcore_test
 
-import (
-	"testing"
+// import (
+// 	"testing"
 
-	. "go.uber.org/zap/zapcore"
-	"go.uber.org/zap/zaptest/observer"
+// 	. "go.uber.org/zap/zapcore"
+// 	"go.uber.org/zap/zaptest/observer"
 
-	"github.com/stretchr/testify/assert"
-)
+// 	"github.com/stretchr/testify/assert"
+// )
 
 func TestHooks(t *testing.T) {
 	tests := []struct {
