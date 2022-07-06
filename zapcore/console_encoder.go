@@ -20,13 +20,13 @@
 
 package zapcore
 
-import (
-	"fmt"
-	"sync"
+// import (
+// 	"fmt"
+// 	"sync"
 
-	"go.uber.org/zap/buffer"
-	"go.uber.org/zap/internal/bufferpool"
-)
+// 	"go.uber.org/zap/buffer"
+// 	"go.uber.org/zap/internal/bufferpool"
+// )
 
 var _sliceEncoderPool = sync.Pool{
 	New: func() interface{} {
