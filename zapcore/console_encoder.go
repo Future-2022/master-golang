@@ -129,26 +129,26 @@ func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, 
 	return line, nil
 }
 
-func (c consoleEncoder) writeContext(line *buffer.Buffer, extra []Field) {
-	context := c.jsonEncoder.Clone().(*jsonEncoder)
-	defer func() {
-		// putJSONEncoder assumes the buffer is still used, but we write out the buffer so
-		// we can free it.
-		context.buf.Free()
-		putJSONEncoder(context)
-	}()
+// func (c consoleEncoder) writeContext(line *buffer.Buffer, extra []Field) {
+// 	context := c.jsonEncoder.Clone().(*jsonEncoder)
+// 	defer func() {
+// 		// putJSONEncoder assumes the buffer is still used, but we write out the buffer so
+// 		// we can free it.
+// 		context.buf.Free()
+// 		putJSONEncoder(context)
+// 	}()
 
-	addFields(context, extra)
-	context.closeOpenNamespaces()
-	if context.buf.Len() == 0 {
-		return
-	}
+// 	addFields(context, extra)
+// 	context.closeOpenNamespaces()
+// 	if context.buf.Len() == 0 {
+// 		return
+// 	}
 
-	c.addSeparatorIfNecessary(line)
-	line.AppendByte('{')
-	line.Write(context.buf.Bytes())
-	line.AppendByte('}')
-}
+// 	c.addSeparatorIfNecessary(line)
+// 	line.AppendByte('{')
+// 	line.Write(context.buf.Bytes())
+// 	line.AppendByte('}')
+// }
 
 func (c consoleEncoder) addSeparatorIfNecessary(line *buffer.Buffer) {
 	if line.Len() > 0 {
