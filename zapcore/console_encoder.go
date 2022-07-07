@@ -67,67 +67,67 @@ func (c consoleEncoder) Clone() Encoder {
 	return consoleEncoder{c.jsonEncoder.Clone().(*jsonEncoder)}
 }
 
-func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, error) {
-	line := bufferpool.Get()
+// func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, error) {
+// 	line := bufferpool.Get()
 
-	// We don't want the entry's metadata to be quoted and escaped (if it's
-	// encoded as strings), which means that we can't use the JSON encoder. The
-	// simplest option is to use the memory encoder and fmt.Fprint.
-	//
-	// If this ever becomes a performance bottleneck, we can implement
-	// ArrayEncoder for our plain-text format.
-	arr := getSliceEncoder()
-	if c.TimeKey != "" && c.EncodeTime != nil {
-		c.EncodeTime(ent.Time, arr)
-	}
-	if c.LevelKey != "" && c.EncodeLevel != nil {
-		c.EncodeLevel(ent.Level, arr)
-	}
-	if ent.LoggerName != "" && c.NameKey != "" {
-		nameEncoder := c.EncodeName
+// 	// We don't want the entry's metadata to be quoted and escaped (if it's
+// 	// encoded as strings), which means that we can't use the JSON encoder. The
+// 	// simplest option is to use the memory encoder and fmt.Fprint.
+// 	//
+// 	// If this ever becomes a performance bottleneck, we can implement
+// 	// ArrayEncoder for our plain-text format.
+// 	arr := getSliceEncoder()
+// 	if c.TimeKey != "" && c.EncodeTime != nil {
+// 		c.EncodeTime(ent.Time, arr)
+// 	}
+// 	if c.LevelKey != "" && c.EncodeLevel != nil {
+// 		c.EncodeLevel(ent.Level, arr)
+// 	}
+// 	if ent.LoggerName != "" && c.NameKey != "" {
+// 		nameEncoder := c.EncodeName
 
-		if nameEncoder == nil {
-			// Fall back to FullNameEncoder for backward compatibility.
-			nameEncoder = FullNameEncoder
-		}
+// 		if nameEncoder == nil {
+// 			// Fall back to FullNameEncoder for backward compatibility.
+// 			nameEncoder = FullNameEncoder
+// 		}
 
-		nameEncoder(ent.LoggerName, arr)
-	}
-	if ent.Caller.Defined {
-		if c.CallerKey != "" && c.EncodeCaller != nil {
-			c.EncodeCaller(ent.Caller, arr)
-		}
-		if c.FunctionKey != "" {
-			arr.AppendString(ent.Caller.Function)
-		}
-	}
-	for i := range arr.elems {
-		if i > 0 {
-			line.AppendString(c.ConsoleSeparator)
-		}
-		fmt.Fprint(line, arr.elems[i])
-	}
-	putSliceEncoder(arr)
+// 		nameEncoder(ent.LoggerName, arr)
+// 	}
+// 	if ent.Caller.Defined {
+// 		if c.CallerKey != "" && c.EncodeCaller != nil {
+// 			c.EncodeCaller(ent.Caller, arr)
+// 		}
+// 		if c.FunctionKey != "" {
+// 			arr.AppendString(ent.Caller.Function)
+// 		}
+// 	}
+// 	for i := range arr.elems {
+// 		if i > 0 {
+// 			line.AppendString(c.ConsoleSeparator)
+// 		}
+// 		fmt.Fprint(line, arr.elems[i])
+// 	}
+// 	putSliceEncoder(arr)
 
-	// Add the message itself.
-	if c.MessageKey != "" {
-		c.addSeparatorIfNecessary(line)
-		line.AppendString(ent.Message)
-	}
+// 	// Add the message itself.
+// 	if c.MessageKey != "" {
+// 		c.addSeparatorIfNecessary(line)
+// 		line.AppendString(ent.Message)
+// 	}
 
-	// Add any structured context.
-	c.writeContext(line, fields)
+// 	// Add any structured context.
+// 	c.writeContext(line, fields)
 
-	// If there's no stacktrace key, honor that; this allows users to force
-	// single-line output.
-	if ent.Stack != "" && c.StacktraceKey != "" {
-		line.AppendByte('\n')
-		line.AppendString(ent.Stack)
-	}
+// 	// If there's no stacktrace key, honor that; this allows users to force
+// 	// single-line output.
+// 	if ent.Stack != "" && c.StacktraceKey != "" {
+// 		line.AppendByte('\n')
+// 		line.AppendString(ent.Stack)
+// 	}
 
-	line.AppendString(c.LineEnding)
-	return line, nil
-}
+// 	line.AppendString(c.LineEnding)
+// 	return line, nil
+// }
 
 // func (c consoleEncoder) writeContext(line *buffer.Buffer, extra []Field) {
 // 	context := c.jsonEncoder.Clone().(*jsonEncoder)
