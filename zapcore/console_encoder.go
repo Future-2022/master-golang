@@ -55,13 +55,13 @@ type consoleEncoder struct {
 // Note that although the console encoder doesn't use the keys specified in the
 // encoder configuration, it will omit any element whose key is set to the empty
 // string.
-func NewConsoleEncoder(cfg EncoderConfig) Encoder {
-	if cfg.ConsoleSeparator == "" {
-		// Use a default delimiter of '\t' for backwards compatibility
-		cfg.ConsoleSeparator = "\t"
-	}
-	return consoleEncoder{newJSONEncoder(cfg, true)}
-}
+// func NewConsoleEncoder(cfg EncoderConfig) Encoder {
+// 	if cfg.ConsoleSeparator == "" {
+// 		// Use a default delimiter of '\t' for backwards compatibility
+// 		cfg.ConsoleSeparator = "\t"
+// 	}
+// 	return consoleEncoder{newJSONEncoder(cfg, true)}
+// }
 
 func (c consoleEncoder) Clone() Encoder {
 	return consoleEncoder{c.jsonEncoder.Clone().(*jsonEncoder)}
