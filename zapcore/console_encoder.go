@@ -150,8 +150,8 @@ func (c consoleEncoder) EncodeEntry(ent Entry, fields []Field) (*buffer.Buffer, 
 // 	line.AppendByte('}')
 // }
 
-func (c consoleEncoder) addSeparatorIfNecessary(line *buffer.Buffer) {
-	if line.Len() > 0 {
-		line.AppendString(c.ConsoleSeparator)
-	}
-}
+// func (c consoleEncoder) addSeparatorIfNecessary(line *buffer.Buffer) {
+// 	if line.Len() > 0 {
+// 		line.AppendString(c.ConsoleSeparator)
+// 	}
+// }
