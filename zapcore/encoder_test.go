@@ -467,6 +467,7 @@ func TestEncoderConfiguration(t *testing.T) {
 			expectedJSON:    `{"L":"info","T":0,"N":"main","C":"foo.go:42","F":"foo.Foo","M":"hello","S":"fake-stack"}` + "\n",
 			expectedConsole: "0\tinfo\tmain\tfoo.Foo\thello\nfake-stack\n",
 		},
+
 		{
 			desc: "handle no-op EncodeName",
 			cfg: EncoderConfig{
@@ -487,6 +488,7 @@ func TestEncoderConfiguration(t *testing.T) {
 			expectedJSON:    `{"L":"info","T":0,"N":"main","C":"foo.go:42","F":"foo.Foo","M":"hello","S":"fake-stack"}` + "\n",
 			expectedConsole: "0\tinfo\tfoo.go:42\tfoo.Foo\thello\nfake-stack\n",
 		},
+		
 		{
 			desc: "use custom line separator",
 			cfg: EncoderConfig{
