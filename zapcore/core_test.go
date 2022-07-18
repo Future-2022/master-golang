@@ -40,6 +40,7 @@ func makeInt64Field(key string, val int) Field {
 	return Field{Type: Int64Type, Integer: int64(val), Key: key}
 }
 
+
 func TestNopCore(t *testing.T) {
 	entry := Entry{
 		Message:    "test",
