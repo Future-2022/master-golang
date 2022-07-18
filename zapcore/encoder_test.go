@@ -527,7 +527,7 @@ func TestEncoderConfiguration(t *testing.T) {
 			expectedJSON:    `{"L":"info","T":0,"N":"main","C":"foo.go:42","F":"foo.Foo","M":"hello","S":"fake-stack"}` + DefaultLineEnding,
 			expectedConsole: "0\tinfo\tmain\tfoo.go:42\tfoo.Foo\thello\nfake-stack" + DefaultLineEnding,
 		},
-		
+
 	}
 
 	for i, tt := range tests {
@@ -550,6 +550,7 @@ func TestEncoderConfiguration(t *testing.T) {
 				"Unexpected JSON output: expected to %v.", tt.desc,
 			)
 		}
+		
 		consoleOut, consoleErr := console.EncodeEntry(entry, nil)
 		if assert.NoError(t, consoleErr, "Unexpected error console-encoding entry in case #%d.", i) {
 			assert.Equal(
