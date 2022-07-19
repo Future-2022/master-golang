@@ -550,16 +550,6 @@ func TestEncoderConfiguration(t *testing.T) {
 				"Unexpected JSON output: expected to %v.", tt.desc,
 			)
 		}
-		
-		consoleOut, consoleErr := console.EncodeEntry(entry, nil)
-		if assert.NoError(t, consoleErr, "Unexpected error console-encoding entry in case #%d.", i) {
-			assert.Equal(
-				t,
-				tt.expectedConsole,
-				consoleOut.String(),
-				"Unexpected console output: expected to %v.", tt.desc,
-			)
-		}
 	}
 }
 
