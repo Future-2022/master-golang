@@ -508,6 +508,7 @@ func TestEncoderConfiguration(t *testing.T) {
 			expectedJSON:    `{"L":"info","T":0,"N":"main","C":"foo.go:42","F":"foo.Foo","M":"hello","S":"fake-stack"}` + "\r\n",
 			expectedConsole: "0\tinfo\tmain\tfoo.go:42\tfoo.Foo\thello\nfake-stack\r\n",
 		},
+
 		{
 			desc: "omit line separator definition - fall back to default",
 			cfg: EncoderConfig{
@@ -526,6 +527,7 @@ func TestEncoderConfiguration(t *testing.T) {
 			expectedJSON:    `{"L":"info","T":0,"N":"main","C":"foo.go:42","F":"foo.Foo","M":"hello","S":"fake-stack"}` + DefaultLineEnding,
 			expectedConsole: "0\tinfo\tmain\tfoo.go:42\tfoo.Foo\thello\nfake-stack" + DefaultLineEnding,
 		},
+		
 	}
 
 	for i, tt := range tests {
