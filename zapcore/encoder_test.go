@@ -555,15 +555,15 @@ func TestEncoderConfiguration(t *testing.T) {
 
 
 func TestLevelEncoders(t *testing.T) {
-	tests := []struct {
-		name     string
-		expected interface{} // output of encoding InfoLevel
-	}{
-		{"capital", "INFO"},
-		{"lower", "info"},
-		{"", "info"},
-		{"something-random", "info"},
-	}
+	// tests := []struct {
+	// 	name     string
+	// 	expected interface{} // output of encoding InfoLevel
+	// }{
+	// 	{"capital", "INFO"},
+	// 	{"lower", "info"},
+	// 	{"", "info"},
+	// 	{"something-random", "info"},
+	// }
 	
 
 	// for _, tt := range tests {
