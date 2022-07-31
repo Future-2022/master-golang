@@ -531,12 +531,12 @@ func TestEncoderConfiguration(t *testing.T) {
 	}
 
 	for i, tt := range tests {
-		json := NewJSONEncoder(tt.cfg)
-		console := NewConsoleEncoder(tt.cfg)
-		if tt.extra != nil {
-			tt.extra(json)
-			tt.extra(console)
-		}
+		// json := NewJSONEncoder(tt.cfg)
+		// console := NewConsoleEncoder(tt.cfg)
+		// if tt.extra != nil {
+		// 	tt.extra(json)
+		// 	tt.extra(console)
+		// }
 		// entry := _testEntry
 		// if tt.amendEntry != nil {
 		// 	entry = tt.amendEntry(_testEntry)
