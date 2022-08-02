@@ -564,6 +564,7 @@ func TestLevelEncoders(t *testing.T) {
 		{"", "info"},
 		{"something-random", "info"},
 	}
+	
 
 	for _, tt := range tests {
 		var le LevelEncoder
