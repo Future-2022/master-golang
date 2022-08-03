@@ -553,6 +553,7 @@ func TestEncoderConfiguration(t *testing.T) {
 	}
 }
 
+
 func TestLevelEncoders(t *testing.T) {
 	tests := []struct {
 		name     string
