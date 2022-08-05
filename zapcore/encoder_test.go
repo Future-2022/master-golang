@@ -624,7 +624,7 @@ func TestTimeEncoders(t *testing.T) {
 func TestTimeEncodersParseFromJSON(t *testing.T) {
 	moment := time.Unix(100, 50005000).UTC()
 	tests := []struct {
-		jsonDoc  string
+		// jsonDoc  string
 		expected interface{} // output of serializing moment
 	}{
 		{`{"timeEncoder": "iso8601"}`, "1970-01-01T00:01:40.050Z"},
