@@ -669,29 +669,29 @@ func TestTimeEncoders(t *testing.T) {
 // 	}
 // }
 
-func TestCallerEncoders(t *testing.T) {
-	caller := EntryCaller{Defined: true, File: "/home/jack/src/github.com/foo/foo.go", Line: 42}
-	tests := []struct {
-		name     string
-		expected interface{} // output of serializing caller
-	}{
-		{"", "foo/foo.go:42"},
-		{"something-random", "foo/foo.go:42"},
-		{"short", "foo/foo.go:42"},
-		{"full", "/home/jack/src/github.com/foo/foo.go:42"},
-	}
+// func TestCallerEncoders(t *testing.T) {
+// 	caller := EntryCaller{Defined: true, File: "/home/jack/src/github.com/foo/foo.go", Line: 42}
+// 	tests := []struct {
+// 		name     string
+// 		expected interface{} // output of serializing caller
+// 	}{
+// 		{"", "foo/foo.go:42"},
+// 		{"something-random", "foo/foo.go:42"},
+// 		{"short", "foo/foo.go:42"},
+// 		{"full", "/home/jack/src/github.com/foo/foo.go:42"},
+// 	}
 
-	for _, tt := range tests {
-		var ce CallerEncoder
-		require.NoError(t, ce.UnmarshalText([]byte(tt.name)), "Unexpected error unmarshaling %q.", tt.name)
-		assertAppended(
-			t,
-			tt.expected,
-			func(arr ArrayEncoder) { ce(caller, arr) },
-			"Unexpected output serializing file name as %v with %q.", tt.expected, tt.name,
-		)
-	}
-}
+// 	for _, tt := range tests {
+// 		var ce CallerEncoder
+// 		require.NoError(t, ce.UnmarshalText([]byte(tt.name)), "Unexpected error unmarshaling %q.", tt.name)
+// 		assertAppended(
+// 			t,
+// 			tt.expected,
+// 			func(arr ArrayEncoder) { ce(caller, arr) },
+// 			"Unexpected output serializing file name as %v with %q.", tt.expected, tt.name,
+// 		)
+// 	}
+// }
 
 func TestNameEncoders(t *testing.T) {
 	tests := []struct {
