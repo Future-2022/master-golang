@@ -644,30 +644,30 @@ func TestTimeEncoders(t *testing.T) {
 // 	}
 // }
 
-func TestDurationEncoders(t *testing.T) {
-	elapsed := time.Second + 500*time.Nanosecond
-	tests := []struct {
-		name     string
-		expected interface{} // output of serializing elapsed
-	}{
-		{"string", "1.0000005s"},
-		{"nanos", int64(1000000500)},
-		{"ms", int64(1000)},
-		{"", 1.0000005},
-		{"something-random", 1.0000005},
-	}
+// func TestDurationEncoders(t *testing.T) {
+// 	elapsed := time.Second + 500*time.Nanosecond
+// 	tests := []struct {
+// 		name     string
+// 		expected interface{} // output of serializing elapsed
+// 	}{
+// 		{"string", "1.0000005s"},
+// 		{"nanos", int64(1000000500)},
+// 		{"ms", int64(1000)},
+// 		{"", 1.0000005},
+// 		{"something-random", 1.0000005},
+// 	}
 
-	for _, tt := range tests {
-		var de DurationEncoder
-		require.NoError(t, de.UnmarshalText([]byte(tt.name)), "Unexpected error unmarshaling %q.", tt.name)
-		assertAppended(
-			t,
-			tt.expected,
-			func(arr ArrayEncoder) { de(elapsed, arr) },
-			"Unexpected output serializing %v with %q.", elapsed, tt.name,
-		)
-	}
-}
+// 	for _, tt := range tests {
+// 		var de DurationEncoder
+// 		require.NoError(t, de.UnmarshalText([]byte(tt.name)), "Unexpected error unmarshaling %q.", tt.name)
+// 		assertAppended(
+// 			t,
+// 			tt.expected,
+// 			func(arr ArrayEncoder) { de(elapsed, arr) },
+// 			"Unexpected output serializing %v with %q.", elapsed, tt.name,
+// 		)
+// 	}
+// }
 
 func TestCallerEncoders(t *testing.T) {
 	caller := EntryCaller{Defined: true, File: "/home/jack/src/github.com/foo/foo.go", Line: 42}
