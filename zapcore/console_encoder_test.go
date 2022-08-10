@@ -19,23 +19,23 @@
 // THE SOFTWARE.
 package zapcore_test
 
-import (
-	"testing"
+// import (
+// 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	. "go.uber.org/zap/zapcore"
-)
+// 	"github.com/stretchr/testify/assert"
+// 	. "go.uber.org/zap/zapcore"
+// )
 
-var (
-	testEntry = Entry{
-		LoggerName: "main",
-		Level:      InfoLevel,
-		Message:    `hello`,
-		Time:       _epoch,
-		Stack:      "fake-stack",
-		Caller:     EntryCaller{Defined: true, File: "foo.go", Line: 42, Function: "foo.Foo"},
-	}
-)
+// var (
+// 	testEntry = Entry{
+// 		LoggerName: "main",
+// 		Level:      InfoLevel,
+// 		Message:    `hello`,
+// 		Time:       _epoch,
+// 		Stack:      "fake-stack",
+// 		Caller:     EntryCaller{Defined: true, File: "foo.go", Line: 42, Function: "foo.Foo"},
+// 	}
+// )
 
 func TestConsoleSeparator(t *testing.T) {
 	tests := []struct {
