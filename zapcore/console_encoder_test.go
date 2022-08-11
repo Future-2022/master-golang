@@ -80,7 +80,6 @@ func TestConsoleSeparator(t *testing.T) {
 	// 			"Unexpected console output",
 	// 		)
 	// 	})
-
 	// }
 }
 
